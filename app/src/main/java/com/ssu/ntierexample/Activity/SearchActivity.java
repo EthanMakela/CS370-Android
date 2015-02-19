@@ -1,13 +1,21 @@
-package com.ssu.ntierexample;
+package com.ssu.ntierexample.Activity;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import com.ssu.ntierexample.R;
 
 
 public class SearchActivity extends Activity {
-
+    private RecipeDataManager dataManager;
+    private EditText inputText;
+    private Button inputButton;
+    private TextView recipeName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
