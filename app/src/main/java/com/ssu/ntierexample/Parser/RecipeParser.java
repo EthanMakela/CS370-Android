@@ -1,5 +1,6 @@
 package com.ssu.ntierexample.Parser;
 
+import com.google.gson.Gson;
 import com.ssu.ntierexample.Model.RecipeModel;
 
 import org.json.JSONArray;
@@ -10,19 +11,15 @@ import org.json.JSONTokener;
 //
 public class RecipeParser {
     // Converts a JSON string to a RecipeModel
-    static public RecipeModel JSONtoModel(String input){
-        RecipeModel model = new RecipeModel();
+    static public RecipeModel JSONtoModel(String input) throws JSONException {
+
         JSONObject json;
-        try {
-            json = (JSONObject) new JSONTokener(input).nextValue();
-            JSONArray array = json.getJSONArray("results");
-            JSONObject recipe = array.getJSONObject(0);
+        Gson gson = new Gson();
+        json = (JSONObject) new JSONTokener(input).nextValue();
+        JSONArray array = json.getJSONArray("results");
+        JSONObject recipe = array.getJSONObject(0);
 
-            model.setName((String)recipe.get("name"));
-
-        }catch(JSONException exception){
-            exception.getCause();
-        }
+        RecipeModel model = gson.fromJson(recipe.toString(), RecipeModel.class);
 
         return model;
     }

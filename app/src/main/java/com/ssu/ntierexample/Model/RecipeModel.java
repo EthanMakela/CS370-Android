@@ -1,14 +1,9 @@
 package com.ssu.ntierexample.Model;
 
+import com.google.gson.annotations.SerializedName;
+
 // An application model used to drive the SearchActivity view
 public class RecipeModel {
-    private String name;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    @SerializedName("name")
+    public String Name;
 }

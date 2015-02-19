@@ -6,6 +6,8 @@ import com.ssu.ntierexample.Interface.IHttpCallbackListener;
 import com.ssu.ntierexample.Model.RecipeModel;
 import com.ssu.ntierexample.Parser.RecipeParser;
 
+import org.json.JSONException;
+
 import java.net.URL;
 
 
@@ -34,9 +36,14 @@ public class RecipeDataManager extends AsyncTask<RecipeSearchRequestArgs, String
         }
 
         //handle the response
-        RecipeModel model = RecipeParser.JSONtoModel(response);
+        try {
+            return RecipeParser.JSONtoModel(response);
+        }
+        catch(JSONException exception){
 
-        return model;
+        }
+
+        return null;
     }
 
     @Override

@@ -69,6 +69,6 @@ public class SearchActivity extends Activity implements IHttpCallbackListener{
     @Override
     public void onRecipeCallback(RecipeModel model) {
         //handle the callback
-        recipeName.setText(model.getName());
+        recipeName.setText(model.Name);
     }
 }
