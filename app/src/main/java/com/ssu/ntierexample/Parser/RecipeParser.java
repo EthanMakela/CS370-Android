@@ -14,11 +14,14 @@ public class RecipeParser {
     static public RecipeModel JSONtoModel(String input) throws JSONException {
 
         JSONObject json;
+
+        //creating the instance of the Gson parser
         Gson gson = new Gson();
         json = (JSONObject) new JSONTokener(input).nextValue();
         JSONArray array = json.getJSONArray("results");
         JSONObject recipe = array.getJSONObject(0);
 
+        //invoking the parser and converting JSON string to ReceipModel
         RecipeModel model = gson.fromJson(recipe.toString(), RecipeModel.class);
 
         return model;
